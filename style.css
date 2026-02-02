@@ -1,0 +1,954 @@
+/* =========================================
+   1. RESET BÁSICO & GENERAL
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    color: #1E1E1E; 
+    background-color: #ffffff;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    
+    /* --- ESTO ES LO NUEVO --- */
+    /* Evita que aparezca la barrita de texto o se ponga azul al hacer doble clic */
+    user-select: none; 
+    -webkit-user-select: none; /* Para Chrome/Safari */
+    -moz-user-select: none;    /* Para Firefox */
+    
+    /* Mantiene el cursor siempre como flechita (no la "I" de texto) */
+    cursor: default; 
+}
+
+/* Permitir escribir en inputs si agregas formularios a futuro */
+input, textarea {
+    user-select: text !important;
+    cursor: text !important;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+/* =========================================
+   2. HEADER & NAVEGACIÓN
+   ========================================= */
+.site-header {
+    padding: 30px 40px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* =========================================
+   3. SECCIÓN HERO (INICIO)
+   ========================================= */
+.home-content {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    padding: 40px 20px 100px 20px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative; /* Clave para los stickers */
+}
+
+.big-title {
+    font-size: 6rem;
+    font-weight: 600;
+    letter-spacing: -3px;
+    text-transform: none;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+
+.hero-description {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #333;
+}
+
+
+/* Palabras Mágicas */
+.magic-word {
+    font-weight: 600;
+    cursor: none; 
+    position: relative;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    display: inline-block;
+    color: #2b2a2a;
+}
+
+.magic-word:hover {
+    color: #2b2a2a;
+    border-bottom: 2px solid #949191;
+}
+
+/* =========================================
+   4. CURSOR MEDIA (FOTO/VIDEO FLOTANTE)
+   ========================================= */
+.cursor-media {
+    position: fixed;
+    width: auto;
+    height: 250px;
+    aspect-ratio: auto;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.cursor-media.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* =========================================
+   5. ABOUT ME (LAYOUT 3 COLUMNAS)
+   ========================================= */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 0.8fr; 
+    gap: 50px;
+    align-items: start;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.col-photo { width: 100%; }
+.img-full {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+.col-bio { padding-right: 20px; }
+.big-intro {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    color: #000;
+}
+.bio-text p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.col-data {
+    padding-top: 10px; 
+    border-left: 1px solid #eee;
+    padding-left: 30px;
+}
+.data-block { margin-bottom: 35px; }
+.blue-title {
+    color: #f58300; /* Tu color naranja */
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+.data-list { list-style: none; padding: 0; }
+.data-list li {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    color: #555;
+    line-height: 1.5;
+}
+.data-list strong { color: #000; }
+
+/* =========================================
+   6. PROYECTOS (ESTILO FOLDER / CARPETA)
+   ========================================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 50px; 
+    padding: 60px 0;
+}
+
+.project-card {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.project-card a {
+    display: block;
+    position: relative; 
+}
+
+/* 1. CUERPO DE LA CARPETA */
+.image-container {
+    position: relative; 
+    width: 100%;
+    height: 220px; 
+    background-color: hsl(202, 70%, 52%); /* Color Manila */
+    border: 1px solid #4db5f1;
+    border-radius: 0 10px 10px 10px; 
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
+    margin-bottom: 15px; 
+    transition: transform 0.3s ease; /* Suavidad del movimiento */
+    z-index: 1;
+    overflow: visible; 
+}
+
+/* 2. PESTAÑA DE LA CARPETA */
+.image-container::before {
+    content: "";
+    position: absolute;
+    top: -25px; 
+    left: -1px;
+    width: 120px; 
+    height: 26px;
+    background-color: #4db5f1; 
+    border: 1px solid #4db5f1;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+/* 3. OCULTAR FOTOS/VIDEOS ANTERIORES */
+.project-img, 
+.project-card video {
+    display: none !important;
+}
+
+/* 4. TÍTULO DENTRO DE LA CARPETA */
+.project-card h3 {
+    position: absolute;
+    /* Centrado vertical y horizontal */
+    top: 110px; 
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%); /* Esto lo centra verticalmente */
+    
+    text-align: center;
+    z-index: 10;
+    
+    /* Estilo de Letra */
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #e2e1e1;
+    text-transform: none; 
+    letter-spacing: -1px;
+
+    /* AGREGADO: Transición suave para que acompañe el movimiento */
+    transition: transform 0.3s ease; 
+}
+
+/* 5. CATEGORÍA (AFUERA - NO SE MUEVE) */
+.project-category {
+    display: block;
+    text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase; 
+}
+
+/* --- EFECTOS HOVER (ANIMACIÓN) --- */
+
+/* A. Mueve la carpeta hacia arriba */
+.project-card:hover .image-container {
+    transform: translateY(-10px);
+}
+
+/* B. Mueve el título hacia arriba (acompañando la carpeta) */
+.project-card:hover h3 {
+    /* Mantiene el centrado (-50%) y le resta los 10px que sube la carpeta */
+    transform: translateY(calc(-50% - 10px)); 
+}
+/* =========================================
+   7. GALERÍA GRID & INTRODUCCIÓN
+   ========================================= */
+
+/* --- A. INTRODUCCIÓN DE CATEGORÍA --- */
+.intro-category {
+    max-width: 800px;
+    margin: 60px auto 80px auto;
+    padding: 0 20px;
+}
+
+.intro-category h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.intro-meta {
+    display: flex;
+    gap: 30px;
+    font-size: 0.9rem;
+    color: #888;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+/* --- B. LA GRILLA (Masonry) --- */
+.gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); 
+    gap: 40px;
+    align-items: center; 
+    margin-bottom: 100px;
+}
+
+.gallery-item {
+    grid-column: span 4; 
+    position: relative;
+}
+
+/* ESTILOS DE IMAGEN/VIDEO (Sin bordes ni marcas) */
+.gallery-item img, 
+.gallery-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* --- C. VARIANTES DE TAMAÑO --- */
+.medium { grid-column: span 6; }
+.wide { grid-column: span 8; }
+.full { grid-column: span 12; }
+.tall { 
+    grid-column: span 4; 
+    grid-row: span 2;
+}
+.push-down { margin-top: 120px; }
+
+/* --- D. POSICIONAMIENTO MANUAL --- */
+.pos-left   { grid-column-start: 1; }
+.pos-center { grid-column-start: 5; }
+.pos-right  { grid-column-end: -1; }
+
+/* --- E. SEPARADORES DE TRABAJOS --- */
+.project-separator {
+    grid-column: 1 / -1; 
+    margin-top: 80px;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    border-top: 1px solid #eee;
+    text-align: left;
+}
+
+.project-separator h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.project-separator p {
+    font-size: 1rem;
+    color: #666;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   F. BLOQUES DE TEXTO (ESTILO NOTA EDITORIAL)
+   ========================================= */
+
+.text-block {
+    /* 1. Ubicación en la grilla */
+    grid-column: span 4; 
+    
+    /* 2. Diseño del Papel */
+    background-color: #fffdf0; 
+    padding: 30px; 
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.1); 
+    border-radius: 2px; 
+    position: relative; 
+    
+    /* 3. NUEVA TIPOGRAFÍA: Playfair Display Italic */
+    font-family: 'Playfair Display', serif; 
+    font-style: italic; /* Cursiva editorial */
+    font-weight: 500; /* Un poco más de grosor para legibilidad */
+    font-size: 1.5rem; /* Tamaño ajustado para esta fuente */
+    line-height: 1.4;
+    color: #333; /* Negro suave */
+    
+    /* 4. Rotación e imperfección */
+    transform: rotate(-1deg); 
+    transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.text-block:hover {
+    transform: scale(1.02) rotate(0deg);
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- LA CINTA ADHESIVA (WASHI TAPE) --- */
+.text-block::before {
+    content: "";
+    position: absolute;
+    top: -12px; 
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg); 
+    
+    width: 90px;  
+    height: 25px; 
+    
+    background-color: rgba(245, 131, 0, 0.3); /* Naranja transparente */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    backdrop-filter: blur(2px);
+}
+
+/* =========================================
+   NOTA ADHESIVA (AUDIO / GENERAL)
+   ========================================= */
+
+.sound-note {
+    /* --- 1. POSICIÓN --- */
+    position: relative; 
+    display: inline-block; 
+    margin-top: 20px; 
+    margin-bottom: 30px; 
+    
+    /* --- 2. ESTILOS VISUALES --- */
+    background-color: #fffdf0; 
+    padding: 15px 25px; 
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.15); 
+    
+    /* 3. NUEVA TIPOGRAFÍA: Playfair Display Italic */
+    font-family: 'Playfair Display', serif; 
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.3rem; /* Un poco más chico que el bloque de texto */
+    color: #333; 
+    line-height: 1.2; 
+    
+    transform: rotate(-1deg); 
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+/* Efecto Hover */
+.sound-note:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* --- 3. LA CINTA --- */
+.sound-note::before {
+    content: "";
+    position: absolute;
+    top: -10px; 
+    left: 50%;
+    transform: translateX(-50%) rotate(1deg); 
+    
+    width: 50px; 
+    height: 12px;
+    
+    background-color: rgba(119, 115, 110, 0.4); 
+    backdrop-filter: blur(1px);
+}
+
+/* --- CLASES EXTRA PARA MOVER LA NOTA --- */
+
+/* 1. Para mandarla a la DERECHA */
+.note-right {
+    display: table; /* Truco para que mantenga el tamaño del texto */
+    margin-left: auto; /* Empuja todo hacia la derecha */
+    margin-right: 0;
+}
+
+/* 2. Para mandarla al CENTRO */
+.note-center {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 3. Para dejarla a la IZQUIERDA (por defecto ya es así, pero por si acaso) */
+.note-left {
+    display: inline-block;
+    margin-right: auto;
+}
+
+/* --- G. PALABRAS RESALTADAS (INLINE) --- */
+.resaltado {
+    font-family: 'Allura', cursive; /* <--- CAMBIO A ALLURA */
+    font-size: 7rem; /* Aumentado porque Allura es más chica y fina */
+    color: #c29e75; /* Tu naranja */
+    line-height: 0.8;
+    vertical-align: middle; 
+    display: inline-block;
+    font-weight: 400; /* Allura se ve mejor sin negrita forzada */
+}
+/* =========================================
+   8. CONTACTO (ESTILO EDITORIAL)
+   ========================================= */
+
+.contact-page {
+    min-height: 80vh; 
+    display: flex;
+    align-items: center; 
+}
+
+.contact-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 60px;
+    align-items: start;
+    position: relative;
+}
+
+/* IZQUIERDA: TÍTULO GIGANTE */
+.huge-title {
+    font-size: 5rem; 
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -3px; 
+    text-transform: none;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+.contact-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+/* DERECHA: DATOS */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 50px; 
+    padding-top: 20px; 
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+/* Email */
+.link-email {
+    font-size: 2rem; 
+    font-weight: 500;
+    color: #000;
+    text-decoration: none;
+    line-height: 1.2;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.link-email:hover {
+    color: #f58300; /* Tu color naranja */
+}
+
+/* Redes */
+.social-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link-social {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 400;
+}
+
+.link-social:hover {
+    color: #f58300; /* Tu color nararnja */
+    padding-left: 10px; 
+    transition: all 0.2s ease;
+}
+
+/* Status */
+.status-text {
+    font-size: 1rem;
+    color: #333;
+}
+.status-text::first-letter {
+    color: #f58300; /* Tu color nararnja */
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   9. STICKERS (DECORACIÓN MANUAL)
+   ========================================= */
+.sticker {
+    position: absolute;
+    /* Por defecto detrás del texto. 
+       Para poner delante, usa style="z-index: 1" en el HTML */
+    z-index: 1; 
+    pointer-events: none;
+    opacity: 1;
+    animation: flotar 6s ease-in-out infinite;
+}
+
+/* Clase para congelar stickers específicos */
+.static {
+    animation: none !important; 
+}
+
+/* Ocultar en escritorio lo que es exclusivo de móvil */
+.only-mobile {
+    display: none !important;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* =========================================
+   10. PÁGINA ESSENTIALS (WORK IN PROGRESS)
+   ========================================= */
+.wip-page {
+    min-height: 70vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative; 
+}
+
+.wip-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.btn-back {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #1E1E1E; 
+    color: #fff;
+    border-radius: 50px; 
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #f58300; /* Tu color nararnja */
+    transform: translateY(-3px); 
+    opacity: 1; 
+}
+
+/* =========================================
+   12. NAVEGACIÓN SIGUIENTE PROYECTO (FOOTER)
+   ========================================= */
+.next-project-nav {
+    padding: 100px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    margin-top: 60px;
+}
+
+.next-label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.next-link {
+    font-size: 4rem; /* Título gigante */
+    font-weight: 800;
+    color: #1E1E1E;
+    text-decoration: none;
+    position: relative;
+    cursor: none; /* Ocultamos el cursor normal para usar el nuestro si quieres, o déjalo default */
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.next-link:hover {
+    color: #f58300; /* Se pone naranja al pasar el mouse */
+}
+
+/* En móvil ajustamos el tamaño */
+@media (max-width: 768px) {
+    .next-link { font-size: 2.5rem; }
+}
+
+/* =========================================
+   12. FOOTER
+   ========================================= */
+.site-footer {
+    padding: 40px;
+    margin-top: 80px;
+    border-top: 1px solid #eee;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* =========================================
+   13. ANIMACIONES (MOTION)
+   ========================================= */
+
+/* --- A. SCROLL REVEAL (Para Index y Proyectos) --- */
+/* Estado inicial: invisible y un poco más abajo */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px); /* Se mueve 40px hacia abajo */
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Suavidad pro */
+}
+
+/* Estado activo: visible y en su lugar (se activa con JS) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- B. SLIDE IN (Para About y Contacto) --- */
+/* Animación automática al cargar */
+.slide-in {
+    opacity: 0;
+    transform: translateX(-40px); /* Empieza a la izquierda */
+    animation: slideInAnim 0.8s forwards cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+@keyframes slideInAnim {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- RETRASOS ESCALONADOS (El ritmo) --- */
+/* Usaremos esto para que no entre todo junto */
+.delay-1 { animation-delay: 0.1s; } /* Título */
+.delay-2 { animation-delay: 0.3s; } /* Subtítulo / Foto */
+.delay-3 { animation-delay: 0.5s; } /* Texto / Info */
+.delay-4 { animation-delay: 0.7s; } /* Extra */
+
+/* =========================================
+   CORRECCIÓN: DEVUELVE EL MOVIMIENTO A LAS NOTAS
+   (Esto arregla el conflicto con la animación de scroll)
+   ========================================= */
+
+/* 1. Cuando la nota ya apareció (.active), forzamos que vuelva a rotar */
+.text-block.reveal.active {
+    transform: rotate(-1deg);
+    opacity: 1; /* Aseguramos que se vea */
+}
+
+/* 2. Cuando pasas el mouse por encima, reactivamos la animación de escala */
+.text-block.reveal.active:hover {
+    transform: scale(1.02) rotate(0deg);
+    box-shadow: 5px 10px 20px rgba(0,0,0,0.15);
+}
+/* =========================================
+   14. RESPONSIVE (TABLET Y MÓVIL)
+   ======================================== */
+
+/* A. Tablet/Móvil (Menor a 900px) */
+@media (max-width: 900px) {
+    
+    /* Header */
+    .site-header { padding: 20px; }
+    .main-nav { display: none; } 
+    .menu-toggle { display: block; } 
+
+    .main-nav.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; width: 100%;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border-top: 1px solid #eee;
+    }
+    .main-nav.active .nav-link {
+        padding: 15px 0;
+        border-bottom: 1px solid #f9f9f9;
+        text-align: center;
+    }
+
+    /* Hero */
+    .big-title { font-size: 3rem; }
+    .hero-description { font-size: 1.2rem; }
+    
+    /* --- MAGIC WORDS & STICKERS --- */
+
+    /* 1. Ocultar stickers y videos flotantes por defecto */
+    .cursor-media, 
+    .sticker { 
+        display: none !important; 
+    }
+
+    /* 2. MAGIC WORDS: Solo texto negrita, sin interacción ni fotos */
+    .magic-word {
+        font-weight: 700 !important; /* Negrita */
+        border-bottom: none !important; /* Sin subrayado */
+        text-decoration: none !important;
+        cursor: default !important; /* Cursor normal */
+        pointer-events: none; /* Desactiva cualquier click */
+    }
+
+    /* --- LA EXCEPCIÓN: Stickers elegidos para el móvil --- */
+    .sticker.show-mobile {
+        display: block !important; /* ¡Que aparezcan! */
+        width: 100px !important; /* Los hacemos más chicos para que no molesten */
+        z-index: 0; /* Detrás del texto siempre */
+    }
+
+    /* CLASE INVERSA: Aparece solo en móvil */
+    .sticker.only-mobile {
+        display: block !important; 
+        z-index: 0; 
+        width: 100px !important;
+    }
+
+    /* --- ABOUT ME (Móvil: Ajuste de espacios) --- */
+    .about-layout {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        
+        /* 1. MENOS AIRE ARRIBA */
+        margin-top: 0px; 
+        
+        /* 2. MÁS AIRE ABAJO (Entre foto y texto) */
+        gap: 50px; 
+    }
+
+    .col-photo { 
+        width: 100%;
+        max-width: 280px; 
+        margin: 0 auto;   
+        position: relative; 
+    }
+
+    /* El Texto (Bio) */
+    .col-bio { 
+        width: 100%; 
+        padding-right: 0; 
+        text-align: left; 
+    }
+
+    .big-intro { 
+        font-size: 1.8rem; 
+        margin-bottom: 20px; 
+    }
+
+    /* Los Datos (Experiencia/Skills) */
+    .col-data { 
+        width: 100%;
+        border-left: none; 
+        border-top: 1px solid #eee; 
+        padding-left: 0; 
+        padding-top: 30px;
+        
+        /* Mantenemos las 2 columnas para los datos si entran */
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px;
+    }
+
+    /* Contacto (Ajuste para móvil) */
+    .contact-layout { grid-template-columns: 1fr; gap: 60px; }
+    .huge-title { font-size: 4rem; } 
+    .link-email { font-size: 1.5rem; word-break: break-all; }
+
+    /* Galería */
+    .intro-category h1 { font-size: 2rem; }
+    .gallery-masonry { display: flex; flex-direction: column; gap: 40px; }
+    .project-separator { margin-top: 40px; padding-top: 20px; }
+    .push-down { margin-top: 0; }
+}
+
+/* B. Móvil Pequeño (Menor a 400px) */
+@media (max-width: 400px) {
+    .about-layout { grid-template-columns: 1fr; } 
+    .col-photo, .col-bio, .col-data { grid-column: 1; grid-row: auto; }
+    .img-full { width: 150px; }
+    .col-data { grid-template-columns: 1fr; }
+}

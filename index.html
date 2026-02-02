@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Barbara</title>
+    <link rel="icon" type="image/png" href="assets/mi-logo-cuadrado.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Inicio</a>
+            <nav class="main-nav">
+                <a href="contact.html" class="nav-link">Contacto</a>
+                <a href="about.html" class="nav-link">About Me</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+        </div>
+    </header>
+
+    <main class="home-content">
+        
+        <section class="hero-section slide-in delay-1">
+            
+            <h1 class="big-title">
+                ¡Hola! soy
+                <span class="magic-word resaltado" style="font-weight: inherit;" data-img="img-inicio/foto-barby1.png, img-inicio/foto-barby2.jpg, img-inicio/foto-barby3.png">Barby.</span>
+            </h1>
+
+            <p class="hero-description slide-in delay-2">
+                Soy una 
+                <span class="magic-word" data-img="img-inicio/foto-multi.jpg, img-inicio/foto-multi2.png">estudiante multimedial</span> 
+                y creativa visual. Me especializo en capturar la esencia de las marcas a través de la 
+                <span class="magic-word" data-img="img-inicio/foto-produ1.jpg, img-inicio/foto-produ2.png, img-inicio/foto-produ3.png">fotografía de producto</span>, 
+                la creación de 
+                <span class="magic-word" data-img="img-inicio/mi-video-reel.mp4">contenido audiovisual</span>
+                y el diseño de impacto.
+            </p>
+
+            <img src="assets/dibus-22.png" class="sticker"
+                style="top: -10%; left: -9%; z-index: -1; width: 150px; transform: rotate(-15deg);">
+            <img src="assets/dibus-3.png" class="sticker static show-mobile"
+                style="bottom: 14%; right: -9%; z-index: -1; width: 120px; transform: rotate(95deg);">
+            <img src="assets/dibus-15.png" class="sticker static show-mobile"
+                style="top: 79%; left: -9%; z-index: -1; width: 150px;">
+
+        </section>
+
+        <img src="" class="cursor-media" id="cursor-image">
+        <video src="" class="cursor-media" id="cursor-video" muted loop playsinline></video>
+
+        
+        <section class="projects-grid">
+            
+            <article class="project-card reveal">
+                <a href="photo-product.html">
+                    <div class="image-container"></div> <h3>Foto Producto</h3> <p class="project-category">E-commerce / Editorial</p>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <a href="reels.html">
+                    <div class="image-container"></div>
+                    <h3>Filmmaking & Reels</h3>
+                    <p class="project-category">Social Media / Editing</p>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <a href="graphic-design.html">
+                    <div class="image-container"></div>
+                    <h3>Diseño Gráfico</h3>
+                    <p class="project-category">Flyers / Branding</p>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <a href="visual-diary.html">
+                    <div class="image-container"></div>
+                    <h3>Diario Visual</h3>
+                    <p class="project-category">Personal / Experimental / Artístico</p>
+                </a>
+            </article>
+
+            <img src="assets/dibus-5.png" class="sticker static"
+                style="bottom: -150%; right: 10%; width: 190px; transform: rotate(10deg);">
+            <img src="assets/dibus-5.png" class="sticker static stickers only-mobile"
+                style="bottom: -259%; right: 10%; width: 190px; transform: rotate(10deg);">
+        
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <a href="esenciales.html" class="desktop-link">Mis Esenciales</a>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/barbybeniitez/" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/in/barby-benitez-0aaa24320/" target="_blank">LinkedIn</a>
+                <a href="#" class="copy-email">Gmail</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
