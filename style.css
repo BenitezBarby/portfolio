@@ -735,10 +735,11 @@ a:hover {
     font-weight: 800;
     color: #1E1E1E;
     text-decoration: none;
-    position: relative;
     cursor: none; /* Ocultamos el cursor normal para usar el nuestro si quieres, o déjalo default */
     display: inline-block;
     transition: color 0.3s ease;
+    z-index: 1000;
+    position: relative; /* O absolute, según como lo tengas, pero asegúrate que tenga position */
 }
 
 .next-link:hover {
