@@ -871,7 +871,12 @@ a:hover {
         border-bottom: none !important; /* Sin subrayado */
         text-decoration: none !important;
         cursor: default !important; /* Cursor normal */
-        pointer-events: none; /* Desactiva cualquier click */
+    }
+
+    /* CORRECCIÓN: Hace que los links del footer vuelvan a funcionar en el celu */
+    .next-link.magic-word {
+        pointer-events: auto !important; /* Reactiva el click */
+        cursor: pointer !important;
     }
 
     /* --- LA EXCEPCIÓN: Stickers elegidos para el móvil --- */
